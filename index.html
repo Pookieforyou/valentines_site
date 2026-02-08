@@ -1,152 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rose Day Lovers Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffecd2);
-            color: #333;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1, h2 {
-            font-family: 'Dancing Script', cursive;
-            color: #d63384;
-        }
-        .heart {
-            position: absolute;
-            font-size: 2rem;
-            color: #ff69b4;
-            animation: float 6s infinite linear;
-            pointer-events: none;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-        .rose {
-            width: 100px;
-            height: 100px;
-            background: url('https://via.placeholder.com/100x100/ff69b4/ffffff?text=🌹') no-repeat center;
-            background-size: cover;
-            margin: 20px auto;
-            animation: bloom 2s ease-in-out;
-        }
-        @keyframes bloom {
-            0% { transform: scale(0); }
-            100% { transform: scale(1); }
-        }
-        button {
-            background: #ff69b4;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-family: 'Dancing Script', cursive;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        button:hover {
-            background: #d63384;
-            transform: scale(1.1);
-        }
-        .page {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .message {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine’s Week</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #fff1f5, #ffffff);
+      color: #333;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      max-width: 1200px;
+      margin: 80px auto 40px;
+      padding: 0 48px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.8rem;
+      color: #e11d48;
+    }
+
+    /* ===== ACCORDION ===== */
+    .section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .accordion {
+      background: #ffffff;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid #ffe4ec;
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.08);
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      padding: 26px 28px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #be123c;
+    }
+
+    .accordion-header span {
+      font-size: 1.6rem;
+      transition: transform 0.4s ease;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.7s ease, opacity 0.5s ease;
+      background: #fff7fa;
+    }
+
+    .accordion-content-inner {
+      padding: 30px 28px 40px;
+    }
+
+    .accordion.active .accordion-content {
+      max-height: 2200px;
+      opacity: 1;
+    }
+
+    .accordion.active .accordion-header span {
+      transform: rotate(45deg);
+    }
+
+    /* ===== COMMON BUTTONS ===== */
+    .btn-group {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    button {
+      background: #ff69b4;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      margin: 8px;
+      font-size: 1.05rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.4px;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+    }
+      background: #ff69b4;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      margin: 8px;
+      font-size: 1.05rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+    }
+
+    button:hover {
+      box-shadow: 0 0 14px rgba(225, 29, 72, 0.45);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.35);
+    }
+
+    .btn-yes {
+      background: #e11d48;
+      box-shadow: 0 6px 16px rgba(225, 29, 72, 0.45);
+    }
+
+    .btn-yes:hover {
+      background: #be123c;
+      box-shadow: 0 0 18px rgba(225, 29, 72, 0.6);
+    }
+
+    button:hover {
+      background: #e11d48;
+      transform: scale(1.08);
+    }
+
+    /* ===== INNER PAGES ===== */
+    .inner-page { display: none; animation: fadeIn 0.8s ease; }
+    .inner-page.active { display: block; }
+
+    /* ===== ROSE DAY ===== */
+    .rose-box {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .rose-box {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .rose-box h2 {
+      font-size: 2.6rem;
+      color: #e11d48;
+      margin-bottom: 10px;
+    }
+
+    .rose-icon {
+      font-size: 4rem;
+      margin: 12px 0 20px;
+      animation: bloom 2s ease-in-out;
+    }
+
+    .content-font {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.9;
+      color: #444;
+      max-width: 620px;
+      margin: auto;
+      text-align: center;
+    }
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #444;
+      max-width: 620px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .rose-message {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: #444;
+      max-width: 620px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .bold-center {
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* ===== PROPOSE DAY ===== */
+    .propose-box {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .propose-box {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .propose-text {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      color: #444;
+      max-width: 620px;
+      margin: auto;
+    }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .time-box {
+      background: #ffe4ec;
+      border-radius: 16px;
+      padding: 20px 26px;
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 2.6rem;
+      color: #e11d48;
+    }
+
+    .time-box small {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @keyframes bloom {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.8rem; }
+    }
+  </style>
 </head>
 <body>
-    <div id="hearts-container"></div>
-    
-    <!-- Home Page -->
-    <div id="home" class="page active fade-in">
-        <div class="container">
-            <h1>Happy Rose Day, CUTU!🌹💖</h1>
-            <div class="rose"></div>
-            <p class="message">Wish to kr hee skta hu, urge hori the cutu ko wish krne ki !
-		Mn to ye krta hai ki saari duniya k Roses aapko laake de du prr ab itni door se kya kru yrr.
-Jo kr skta tha jo likh skta tha wo likha hai bss aapke liye.</p>
-            <button onclick="showPage('love')">Message</button>
-            <button onclick="showPage('rose')">Rose Day Wishes</button>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Valentine’s Week<br>Made With Love</h1>
+  </section>
+
+  <!-- SECTIONS -->
+  <section class="section">
+
+    <!-- ROSE DAY -->
+    <div class="accordion">
+      <div class="accordion-header">🌹 Rose Day <span>+</span></div>
+      <div class="accordion-content">
+        <div class="accordion-content-inner">
+
+          <div id="rose-home" class="inner-page active">
+            <div class="rose-box">
+              <h2>Happy Rose Day, CUTU</h2>
+              <div class="rose-icon">🌹</div>
+              <p class="rose-message content-font">
+                Wish to kr hee skta hu, urge hori the cutu ko wish krne ki !💞
+                <br><br>
+                Mn to ye krta hai ki saari duniya k Roses aapko laake de du prr ab itni door se kya kru yrr.
+                <br><br>
+                Jo kr skta tha jo likh skta tha wo likha hai bss aapke liye.📖
+              </p>
+              <div class="btn-group">
+                <button onclick="showRose('message')">Message</button>
+                <button onclick="showRose('wishes')">Rose Day Wishes</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="rose-message" class="inner-page">
+            <p class="rose-message content-font bold-center">I miss you Sooooo Soooooooo much cutu ! 😙💞</p>
+            <div class="btn-group">
+              <button onclick="showRose('home')">Home</button>
+            </div>
+          </div>
+
+          <div id="rose-wishes" class="inner-page">
+            <p class="rose-message content-font bold-center">
+              Saalon se saath hai, phir bhi baat wahi nayi lagti hai,
+              Har muskaan teri, aaj bhi dil ko chura le jaati hai,
+              Rose Day ho ya zindagi ka har ek pal haseen,
+              Tu saath ho jo mere, toh har kahani pyaar si lagti hai 🫂
+              <br><br>
+              <strong>Happy Rose Day my Sunflower🌻❤️</strong>
+            </p>
+            <div class="btn-group">
+              <button onclick="showRose('home')">Home</button>
+            </div>
+          </div>
+
         </div>
+      </div>
     </div>
-    
-    <!-- Love Message Page -->
-    <div id="love" class="page">
-        <div class="container fade-in">
-            <h2>Meri Pyaari Cutu Babyyy💕</h2>
-            <div class="rose"></div>
-            <p class="message">I miss you Sooooo Soooooooo much cutu !🌹❤️</p>
-            <button onclick="showPage('home')">Back to Home</button>
-            <button onclick="showPage('rose')">Rose Day Wishes</button>
+
+    <!-- PROPOSE DAY -->
+    <div class="accordion">
+      <div class="accordion-header">💍 Propose Day <span>+</span></div>
+      <div class="accordion-content">
+        <div class="accordion-content-inner">
+
+          <div id="propose-home" class="inner-page active">
+            <div class="propose-box">
+              <p class="propose-text content-font">
+                Har kahani ki shuruaat ek haan se hoti hai,
+                aur meri har kahani tum se shuru hoti hai.🫵
+                <br><br>
+                Will you be my Valentines CUTU?💍
+              </p>
+              <div class="btn-group">
+                <button class="btn-yes" onclick="showPropose('yes')">Yes</button>
+                <button onclick="showPropose('no')">No</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="propose-yes" class="inner-page">
+            <p class="propose-text content-font bold-center">Awwww I want to be your valentines for life cutu 🫵😘</p>
+            <div class="btn-group">
+              <button onclick="showPropose('home')">Home</button>
+            </div>
+          </div>
+
+          <div id="propose-no" class="inner-page">
+            <p class="propose-text content-font bold-center">Hawww sharam ni aati no kroge😭</p>
+            <div class="btn-group">
+              <button onclick="showPropose('home')">Retry</button>
+            </div>
+          </div>
+
         </div>
+      </div>
     </div>
-    
-    <!-- Rose Day Wishes Page -->
-    <div id="rose" class="page">
-        <div class="container fade-in">
-            <h2>Rose Day Wishes for You 🌹</h2>
-            <div class="rose"></div>
-            <p class="message">Saalon se saath hai, phir bhi baat wahi nayi lagti hai,
-Har muskaan teri, aaj bhi dil ko chura le jaati hai,
-Rose Day ho ya zindagi ka har ek pal haseen,
-Tu saath ho jo mere, toh har kahani pyaar si lagti hai💖🌸</p>
-<h2><p>Happy Rose day my Sunflower 💕</p><h2>
-            <button onclick="showPage('home')">Back to Home</button>
-            <button onclick="showPage('love')">Message</button>
+
+    <!-- CHOCOLATE DAY -->
+    <div class="accordion">
+      <div class="accordion-header">🍫 Chocolate Day <span>+</span></div>
+      <div class="accordion-content">
+        <div class="accordion-content-inner">
+          <div class="countdown" id="countdown"></div>
         </div>
+      </div>
     </div>
-    
-    <script>
-        // Generate floating hearts
-        function createHearts() {
-            const container = document.getElementById('hearts-container');
-            for (let i = 0; i < 20; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 6 + 's';
-                container.appendChild(heart);
-            }
-        }
-        createHearts();
-        
-        // Page navigation
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-    </script>
+
+  </section>
+
+  <script>
+    /* Accordion */
+    document.querySelectorAll('.accordion').forEach(acc => {
+      acc.querySelector('.accordion-header').addEventListener('click', () => {
+        acc.classList.toggle('active');
+        acc.querySelector('span').textContent = acc.classList.contains('active') ? '×' : '+';
+      });
+    });
+
+    /* Rose navigation */
+    function showRose(page) {
+      document.querySelectorAll('#rose-home, #rose-message, #rose-wishes').forEach(p => p.classList.remove('active'));
+      document.getElementById('rose-' + page).classList.add('active');
+    }
+
+    /* Propose navigation */
+    function showPropose(page) {
+      document.querySelectorAll('#propose-home, #propose-yes, #propose-no').forEach(p => p.classList.remove('active'));
+      document.getElementById('propose-' + page).classList.add('active');
+    }
+
+    /* Countdown */
+    const countdownEl = document.getElementById('countdown');
+    const target = new Date();
+    target.setDate(target.getDate() + 1);
+    target.setHours(12, 0, 0, 0);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) return countdownEl.innerHTML = '<span>Happy Chocolate Day</span>';
+
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `
+        <div class="time-box"><span>${String(h).padStart(2,'0')}</span><small>Hours</small></div>
+        <div class="time-box"><span>${String(m).padStart(2,'0')}</span><small>Minutes</small></div>
+        <div class="time-box"><span>${String(s).padStart(2,'0')}</span><small>Seconds</small></div>`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
 </body>
 </html>
